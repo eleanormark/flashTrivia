@@ -1,0 +1,98 @@
+* {
+  color: #4E4E4E;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;  
+  opacity: .3; 
+  z-index: -1;
+  background-image: url("../images/canada.png");
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+.start-container {
+   height:100vh;
+}
+
+.start{
+   position: absolute;
+   top: 30%;
+   right: 30%;
+   left: 30%;
+}
+#timer {
+  padding-top: 100px;
+  display: none;
+}
+
+.quiz {
+ height:100vh;
+ display: none;
+ margin-top: 40px;
+}
+
+.game-over-container {
+   height:100vh;
+   display: none; 
+}
+.game-over {
+   position: absolute;
+   margin-top: 10px; 
+   right: 30%;
+   left: 30%;
+}
+
+h1 {
+  color: red;
+}
+
+button{
+    background-color: #999999;
+    border: 3px solid #666666;
+    padding: 10px 40px; 
+    width: 200px;
+    border-radius: 10px;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    font-size: 14px;
+}
+
+button:active {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    border: 3px solid #999999;
+}
+
+.selection {
+  width: 250px;
+  height: 40px;
+  margin: 0 auto;
+  line-height: 40px;
+  margin-bottom: 5px;
+}
+
+.selection:hover{
+  background-color: red;
+  filter: alpha(opacity=60);
+  opacity: 0.6;
+}
+
+.selection:active {
+    opacity: 0.75;
+    filter: alpha(opacity=75);
+    border: 3px solid #cccccc;
+}
+
+
+

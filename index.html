@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <title>Flash Trivia</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="start-container">
+        <div class="start">
+        <h1>The Best of Canada</h1>
+        <h3>Flash Trivia Game</h3>
+        <button id="start">Start</button>
+        </div>
+      </div>
+      <div id="timer">        
+        <h1>The Best of Canada</h1>
+        <h3>Time Remaining <span id="display">00:40</span> Seconds</h3>
+      </div>
+
+      <div class="quiz">  
+        <h3 class="question"></h3>
+        <div class="selection-group"></div>
+        <div class="answer"></div>
+      </div>
+      
+      <div class="game-over-container">
+        <div class="game-over">
+          <h3>All Done!</h3>
+          <h4>Correct Answers:<span id="correct"></span></h4>
+          <h4>Incorrect Answers:<span id="incorrect"></span></h4>
+          <h4>Unanswered:<span id="unanswered"></span></h4>
+          <br>
+          <button id="start-over">Start Over</button>
+        </div>
+
+      </div>
+    </div>
+
+
+      <!-- Script -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+  </body>
+
+</html>
