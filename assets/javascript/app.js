@@ -1,24 +1,4 @@
- $( document ).ready(function() {
-
-  	$("#start").click(function() {
-
-      	$('.start-container').css('display','none');
-        trivia.getQuestion(trivia.count);
-
-  }); //end $("#start").click
-
-    $(document).on('click', '.selection', function() { trivia.getAnswer(this, trivia.count); });
-
-    $("#start-over").click(function(){
-    $('.game-over-container').css('display','none');
-    trivia.count = 0;
-    trivia.correct = 0;
-    trivia.incorrect = 0;
-    stopwatch.reset();
-    trivia.getQuestion(trivia.count);
-    });
-
- });
+'use strict';
 
 var trivia = {
     count: 0,  //keep track of current question
@@ -27,7 +7,7 @@ var trivia = {
     questions: [{
         question: "The capital city of Canada?",
         answer: 'Ottawa',
-        selections: ['Whistler','Victoria','Ottawa', 'Halifax']
+        selections: ['Whistler','Victoria', 'Ottawa', 'Halifax']
     }, {
         question: 'The largest city in Canada?',
         answer: 'Toronto',
@@ -39,7 +19,7 @@ var trivia = {
     }, {
         question: "When do Canadians celebrate their Independence Day?",
         answer: 'July 1',
-        selections: ['July 1','July 4','July 6', 'July 14']
+        selections: ['July 1', 'July 4','July 6', 'July 14']
     }, {
         question: 'How many provinces are in Canada?',
         answer: '10',
@@ -52,11 +32,11 @@ var trivia = {
     }, {
         question: "What year did Justin Trudeau become prime minister?",
         answer: '2015',
-        selections: ['2012','2013','2014', '2015']
+        selections: ['2012', '2013', '2014', '2015']
     }, {
         question: "The animal symbol of Canada?",
         answer: 'Beaver',
-        selections: ['Grizzly Bear','Beaver','Bison', 'Caribou']
+        selections: ['Grizzly Bear', 'Beaver', 'Bison', 'Caribou']
     }],
 
     getQuestion: function(questionIndex) {
@@ -66,36 +46,38 @@ var trivia = {
 
        // display new question
        $('.question').html(trivia.questions[questionIndex].question);
-        trivia.questions[questionIndex].selections.forEach(function(index) {
-       $('.selection-group').append( '<div class="selection">'+ index +'</div>');
+        
+       trivia.questions[questionIndex].selections.forEach(function(index) {
+            $('.selection-group').append('<div class="selection">' + index + '</div>');
         });
+        
        $('.question, .selection-group').css('display', 'block');
-       $('#timer, .quiz').css('display','block');
-      stopwatch.start();
+       $('#timer, .quiz').css('display', 'block');
+       stopwatch.start();
     },
     getAnswer: function(this_, questionIndex) {
-      var playerSelection = $(this_).html();
-      $('.question, .selection-group').css('display', 'none');
-      stopwatch.stop();
+        var playerSelection = $(this_).html();
+        $('.question, .selection-group').css('display', 'none');
+        stopwatch.stop();
 
-      //Display message for correct or incorrect selection  
-      if (playerSelection === trivia.questions[questionIndex].answer){
-        $('.answer').append('<h3 class="correct">Correct!</div>');
-        trivia.correct++;
-      } else {
-        $('.answer').append('<h3 class="incorrect">Incorrect! The correct answer is '+ 
-            trivia.questions[questionIndex].answer +'. </div>');
-        trivia.incorrect++;
+        //Display message for correct or incorrect selection  
+        if (playerSelection === trivia.questions[questionIndex].answer){
+            $('.answer').append('<h3 class="correct">Correct!</div>');
+            trivia.correct++;
+        } else {
+            $('.answer').append('<h3 class="incorrect">Incorrect! The correct answer is '+ trivia.questions[questionIndex].answer +'. </div>');
+            trivia.incorrect++;
       }
       trivia.count++;
 
       //Show next question or game over page after 1 sec
       if (trivia.count < trivia.questions.length) {
-          setTimeout(function () { trivia.getQuestion(trivia.count); }, 2000);                                                             
-        }else {
-          setTimeout(function () { 
-            stopwatch.stop();
-            stopwatch.gameOver();}, 2000); 
+          setTimeout(function() { trivia.getQuestion(trivia.count); }, 2000);                                                             
+        } else {
+            setTimeout(function() { 
+                stopwatch.stop();
+                stopwatch.gameOver();
+          }, 2000); 
         }
     }
  };
@@ -195,3 +177,19 @@ var stopwatch = {
     return minutes + ":" + seconds;
   }
 };
+
+$("#start").click(function() {
+    $('.start-container').css('display','none');
+    trivia.getQuestion(trivia.count);
+}); //end $("#start").click
+
+$(document).on('click', '.selection', function() { trivia.getAnswer(this, trivia.count); });
+
+$("#start-over").click(function() {
+$('.game-over-container').css('display', 'none');
+    trivia.count = 0;
+    trivia.correct = 0;
+    trivia.incorrect = 0;
+    stopwatch.reset();
+    trivia.getQuestion(trivia.count);
+});
